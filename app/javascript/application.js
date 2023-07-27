@@ -11,7 +11,7 @@ document.addEventListener("turbo:before-render", (event) => {
     await new Promise((resolve) => setTimeout(() => resolve(), 0));
     morphdom(prevEl, newEl, {
       onBeforeElUpdated: (fromEl, toEl) => {
-        return !(fromEl.dataset.morphdomTurboPermanent && fromEl.id === toEl.id);
+        return !fromEl.dataset.morphdomTurboPermanent;
       },
     });
   };
