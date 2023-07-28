@@ -39,9 +39,7 @@ document.addEventListener("turbo:before-frame-render", (event) => {
       );
     }
 
-    morphdom(currentElement, newElement, {
-      childrenOnly: true,
-    });
+    morphdom(currentElement, newElement);
   };
 
   if (document.startViewTransition) {
@@ -52,7 +50,7 @@ document.addEventListener("turbo:before-frame-render", (event) => {
         event.detail.resume();
       })
       .finished.then(() => {
-        document.documentElement.removeAttribute("transition");
-      });
+      document.documentElement.removeAttribute("transition");
+    });
   }
 });
