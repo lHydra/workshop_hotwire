@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "page-#{next_page}", src: artist_tracks_path(artist, page: next_page), loading: :lazy, target: "_top" do %>
+  <div class="text-center">
+    <%= render partial: 'shared/spinner' %>
+  </div>
+<% end %>
