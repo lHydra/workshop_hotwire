@@ -12,6 +12,6 @@
   }
 
   .flash .flash--close {
-    @apply absolute pointer top-1.5 right-1
+    @apply absolute cursor-pointer top-1.5 right-1
   }
 }
