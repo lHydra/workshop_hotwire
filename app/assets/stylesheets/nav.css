@@ -15,6 +15,14 @@
   @apply relative;
 }
 
+.nav--search--results {
+  @apply absolute w-[300px] top-0 bg-white mt-8 z-40 shadow-md pt-2;
+}
+
+.nav--search--result {
+  @apply p-2;
+}
+
 .nav--search--icon {
   @apply absolute z-[2] inset-y-4 left-0 flex items-center pl-2 pointer-events-none text-black;
 }

@@ -1,0 +1,15 @@
+<div data-controller="search"
+     data-search-form-path-value="<%= search_url %>"
+>
+  <%= form_with(url: search_path, method: :get, class: "nav--search") do |f| %>
+    <div class="nav--search--icon">
+      <%= render "icons/search" %>
+    </div>
+    <%= f.search_field :q, value: params[:q], class: "nav--search--input", data: { "search-target": "input", action: "input->search#search" } %>
+
+    <ul class="nav--search--results hidden" data-search-target="results">
+      <%= turbo_frame_tag :search_results, target: "_top", data: { "search-target" => "searchResultFrame" } %>
+    </ul>
+  <% end %>
+</div>
+
