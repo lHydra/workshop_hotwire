@@ -9,5 +9,9 @@ class SearchController < ApplicationController
     @artists = Artist.search(q).limit(10)
     @albums = Album.search(q).limit(10)
     @tracks = Track.search(q).limit(10)
+
+    if turbo_frame_request?
+      render partial: 'search/results', locals: { artists: @artists, tracks: @tracks, albums: @albums }
+    end
   end
 end

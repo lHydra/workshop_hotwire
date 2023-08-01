@@ -1,0 +1,22 @@
+<%= turbo_frame_tag :search_results do %>
+  <% artists.each do |artist| %>
+    <li class="nav--search--result">
+      <%= link_to artist.name, artist_path(artist), class: "hover:text-primary", data: { "search-target": "link" } %>
+      <span class="ml-2 text-secondary text-xsmall"><%= artist.bio&.truncate(80) %></span>
+    </li>
+  <% end %>
+
+  <% tracks.each do |track| %>
+    <li class="nav--search--result">
+      <%= link_to track.title, play_track_path(track), class: "hover:text-primary", data: { "search-target": "link", "turbo-frame" => "player" } %>
+      <span class="ml-2 text-secondary text-xsmall"><%= track.album.title %></span>
+    </li>
+  <% end %>
+
+  <% albums.each do |album| %>
+    <li class="nav--search--result">
+      <%= link_to album.title, album_path(album), class: "hover:text-primary", data: { "search-target": "link" } %>
+      <span class="ml-2 text-secondary text-xsmall"><%= album.artist.name %></span>
+    </li>
+  <% end %>
+<% end %>
