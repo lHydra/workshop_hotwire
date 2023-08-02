@@ -5,6 +5,9 @@ import "turbo-morphdom";
 import "controllers";
 import { createCable } from "@anycable/web";
 import { start } from "@anycable/turbo-stream";
+import TurboPower from 'turbo_power'
+
+TurboPower.initialize(Turbo.StreamActions)
 
 const logLevel = document.documentElement.classList.contains("debug")
   ? "debug"

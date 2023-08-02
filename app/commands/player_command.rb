@@ -17,4 +17,28 @@ class PlayerCommand < ApplicationCommand
       turbo_stream.update("player", partial: "player/player", locals: {track:})
     end
   end
+
+  def resume
+    if current_user&.live_station&.live?
+      station = current_user.live_station
+      Turbo::StreamsChannel.broadcast_render_to(
+        station, partial: 'shared/custom_stream_actions/set_dataset_attribute', locals: {
+        target: 'active-player', attribute: 'player-playing-value', value: true
+      })
+    end
+
+    turbo_stream.set_dataset_attribute('#active-player', 'player-playing-value', true)
+  end
+
+  def pause
+    if current_user&.live_station&.live?
+      station = current_user.live_station
+      Turbo::StreamsChannel.broadcast_render_to(
+        station, partial: 'shared/custom_stream_actions/set_dataset_attribute', locals: {
+        target: 'active-player', attribute: 'player-playing-value', value: false
+      })
+    end
+
+    turbo_stream.set_dataset_attribute('#active-player', 'player-playing-value', false)
+  end
 end

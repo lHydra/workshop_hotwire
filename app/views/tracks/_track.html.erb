@@ -4,7 +4,7 @@
     <span class="track--playing-indicator"></span>
     <span class="track--number--text"><%= track_counter + 1 %></span>
   </span>
-  <%= button_to "#", method: :post, form: {class: "track--title", data: {"track" => track.id, "turbo-command" => "PlayerCommand#play"}} do %>
+  <%= button_to "/", method: :post, form: {class: "track--title", data: {"track" => track.id, "turbo-command" => "PlayerCommand#play"}} do %>
     <%= track.title %>
   <% end %>
   <% if current_user %>
