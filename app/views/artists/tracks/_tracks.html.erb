@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "page-#{current_page}", target: "_top" do %>
+  <%= render partial: "tracks/track", collection: tracks, locals: { enqueueble: true, offset: } %>
+
+  <% if next_page.present? %>
+    <%= render partial: "artists/tracks/next_page", locals: { artist:, next_page: } %>
+  <% end %>
+<% end %>
