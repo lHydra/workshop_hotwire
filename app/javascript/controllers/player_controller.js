@@ -93,8 +93,10 @@ export default class extends Controller {
     this.updateProgress(currentTime);
   }
 
-  handleSpaceHotkey() {
-    if (this.element.classList.contains(this.playingClass)) {
+  handleSpaceHotkey(e) {
+    e.preventDefault();
+
+    if (this.playing) {
       this.pause();
     } else {
       this.play();
